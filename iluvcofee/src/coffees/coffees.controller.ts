@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Delete,
+  Get,
+  Param,
+  Patch,
+  Post,
+} from '@nestjs/common';
 
 @Controller('coffees')
 export class CoffeesController {
@@ -16,5 +24,15 @@ export class CoffeesController {
   // It is possible to pass a string to @Body decorater to get only part of te body. @see: https://learn.nestjs.com/courses/591712/lectures/18346817
   create(@Body() body) {
     return body;
+  }
+
+  @Patch(':id')
+  update(@Param('id') id: string, @Body() body) {
+    return `This action updates #${id} coffee`;
+  }
+
+  @Delete(':id')
+  delete(@Param('id') id: string) {
+    return `This actions removes #${id} coffee`;
   }
 }
