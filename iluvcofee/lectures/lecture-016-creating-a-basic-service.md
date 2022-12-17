@@ -1,7 +1,7 @@
 https://learn.nestjs.com/courses/591712/lectures/18346824
 
 - Statistics:
-  - Study time to video time ratio: 33/8 = 4.1/1
+  - Study time to video time ratio: 33/8 = 4/1
 
 ## Notes
 
