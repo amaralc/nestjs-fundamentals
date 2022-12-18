@@ -23,13 +23,15 @@ export class CoffeesController {
   }
 
   @Get(':id')
-  findOne(@Param('id') id: string) {
-    return this.coffeeService.findOne(id);
+  findOne(@Param('id') id: number) {
+    console.log(typeof id);
+    return this.coffeeService.findOne('' + id);
   }
 
   @Post()
   // It is possible to pass a string to @Body decorater to get only part of te body. @see: https://learn.nestjs.com/courses/591712/lectures/18346817
   create(@Body() body: CreateCoffeeDto) {
+    console.log(body instanceof CreateCoffeeDto);
     return this.coffeeService.create(body);
   }
 
