@@ -16,7 +16,6 @@ https://learn.nestjs.com/courses/591712/lectures/23192389
   - Validation pipe provides a convenient way of enforcing validation rules for all incoming client payload;
   - It is possible to specify these rules by using an annotation in the DTO;
   - First it is necessary to setup the application to use the validation pipe;
-  - Help us define the interfaces for the input and output within our system;
-  - Ex.: with DTOs we can define the shape or interface of what we are expecting to receive for the body in a POST request;
-  - (terminal) Add DTO to specify the shape of the body for creating a new coffee: `nest g class coffees/dto/create-coffee.dto --no-spec --flat`;
-  - (terminal) Use the cli help to check options for CLI commands: `nest g class --help`;
+  - The libraries `class-validator` and `class-transformer` are used to enforce rules;
+    - `class-validator`: https://github.com/typestack/class-validator
+    - `class-transformer`: https://github.com/typestack/class-transformer
