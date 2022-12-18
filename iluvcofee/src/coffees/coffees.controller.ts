@@ -30,6 +30,7 @@ export class CoffeesController {
   @Post()
   // It is possible to pass a string to @Body decorater to get only part of te body. @see: https://learn.nestjs.com/courses/591712/lectures/18346817
   create(@Body() body: CreateCoffeeDto) {
+    console.log(body instanceof CreateCoffeeDto);
     return this.coffeeService.create(body);
   }
 
