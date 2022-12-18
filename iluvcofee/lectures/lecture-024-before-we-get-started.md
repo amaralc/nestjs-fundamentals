@@ -2,10 +2,10 @@ https://learn.nestjs.com/courses/591712/lectures/23193757
 
 - Statistics:
   - Start: 22:54:00
-  - End: 22:32:00
-  - Total: 00:13:00
-  - Video: 00:03:01
-  - Study time to video time ratio: 4/1
+  - End: 22:59:00
+  - Total: 00:05:00
+  - Video: 00:00:46
+  - Study time to video time ratio: 5/1
 
 </br>
 
