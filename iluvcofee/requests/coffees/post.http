@@ -4,5 +4,6 @@ content-type: application/json
 {
 	"name": "Alta Colina",
 	"brand": "Buddy Brew",
-	"flavors": ["caramel"]
+	"flavors": ["caramel"],
+	"isValid":true
 }
