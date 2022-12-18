@@ -19,3 +19,5 @@ https://learn.nestjs.com/courses/591712/lectures/23192389
   - The libraries `class-validator` and `class-transformer` are used to enforce rules;
     - `class-validator`: https://github.com/typestack/class-validator
     - `class-transformer`: https://github.com/typestack/class-transformer
+  - Use inheritance to pass properties and evan validation rules from DTO to DTO;
+    - The library `@nestjs/mapped-types` can be used for that purpose;
