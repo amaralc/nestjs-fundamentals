@@ -3,6 +3,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { CoffeesController } from './coffees.controller';
 import { CoffeesService } from './coffees.service';
 import { Coffee } from './entities/coffee.entity';
+import { Flavor } from './entities/flavor.entity';
 
 @Module({
   controllers: [CoffeesController],
@@ -10,6 +11,6 @@ import { Coffee } from './entities/coffee.entity';
   /**
    * Registers typeorm in this child module
    */
-  imports: [TypeOrmModule.forFeature([Coffee])],
+  imports: [TypeOrmModule.forFeature([Coffee, Flavor])],
 })
 export class CoffeesModule {}
