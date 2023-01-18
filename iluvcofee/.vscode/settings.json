@@ -15,5 +15,5 @@
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "cSpell.words": ["typeorm"]
+  "cSpell.words": ["fastify", "typeorm"]
 }
