@@ -40,6 +40,11 @@ export class Coffee {
    * 1 - Relation type: Function that returns a reference to the related entity
    * 2 - Arrow function that returns the related entity and specifies what property needs to be selected that is the inverse side of the relationship (what is coffee inside of the Flavors entity?)
    */
-  @ManyToMany((type) => Flavor, (flavor) => flavor.coffees)
-  flavors: string[];
+  @ManyToMany(
+    (type) => Flavor,
+    (flavor) => flavor.coffees,
+    { cascade: true }, // allow cascading to all operations
+    // { cascade: ['insert'] } // Limits cascading only to insert operation
+  )
+  flavors: Flavor[];
 }
