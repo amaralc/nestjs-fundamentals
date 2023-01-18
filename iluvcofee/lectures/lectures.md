@@ -1,8 +1,9 @@
 # Lectures
 
-- [32 - Retrieve Entities with their Relations](#lecture-32-retrieve-entities-with-their-relations)
-- [33 - Using Cascading Inserts and Updates](#lecture-33-using-cascading-inserts-and-updates)
-- [33 - Adding Pagination](#lecture-34-adding-pagination)
+- [Lecture 32: Retrieve Entities with their Relations](#lecture-32-retrieve-entities-with-their-relations)
+- [Lecture 33: Using Cascading Inserts and Updates](#lecture-33-using-cascading-inserts-and-updates)
+- [Lecture 34: Adding Pagination](#lecture-34-adding-pagination)
+- [Lecture 35: Adding Transactions](#lecture-35-adding-transactions)
 
 ## Lecture 32: Retrieve entities with their relations
 
@@ -50,3 +51,21 @@ https://learn.nestjs.com/courses/591712/lectures/23193770
       "enableImplicitConversion": true,
     },
   ```
+
+## Lecture 35: Adding Transactions
+
+https://learn.nestjs.com/courses/591712/lectures/23193771
+
+</br>
+
+- Database transactions;
+
+  - Symbolizes a unit of work performed within a data management system;
+  - A reliable way to accomplish multiple tasks independent of other transactions;
+
+- Transactions and TypeORM;
+  - There are many different strategies to handle TypeORM transactions but this course recommends using the QueryRunner class because it gives full control over the transaction;
+    - Obs.: A query runner, run queries on a single database connection
+    - https://typeorm.delightful.studio/interfaces/_query_runner_queryrunner_.queryrunner.html
+    - https://orkhan.gitbook.io/typeorm/docs/query-runner
+  - There are other complex and advanced techniques to achieve this which leverage Nest scope providers and interceptors to automatically wrap every write query in the transaction, but these techniques are covered in other advanced NestJS courses in the future;
