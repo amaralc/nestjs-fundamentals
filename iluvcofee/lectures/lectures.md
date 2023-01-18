@@ -2,6 +2,7 @@
 
 - [32 - Retrieve Entities with their Relations](#lecture-32-retrieve-entities-with-their-relations)
 - [33 - Using Cascading Inserts and Updates](#lecture-33-using-cascading-inserts-and-updates)
+- [33 - Adding Pagination](#lecture-34-adding-pagination)
 
 ## Lecture 32: Retrieve entities with their relations
 
@@ -30,3 +31,22 @@ https://learn.nestjs.com/courses/591712/lectures/23193769
 - Insert relations together with the main entity;
 - Promise.all
   - Use await Promise.all "to wait until the entire array of promises finishes before executing for their code";
+
+## Lecture 34: Adding Pagination
+
+https://learn.nestjs.com/courses/591712/lectures/23193770
+
+</br>
+
+- Use class transformer to parse url information as a specific data type, such as numbers;
+  - e.g.: `@Type(() => Number)`;
+- Use `transformOptions` in the `ValidationPipe` to customize data transformations in a global level;
+
+  - e.g.:
+
+  ```json
+    "transformOptions": {
+      // With this option set to true, we no longer need to specify types with the @Type decorator;
+      "enableImplicitConversion": true,
+    },
+  ```
