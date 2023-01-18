@@ -1,7 +1,8 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { PaginationQueryDto } from 'src/common/dto/pagination-query.dto';
-import { Repository } from 'typeorm';
+import { Event } from 'src/events/entities/event.entity';
+import { DataSource, Repository } from 'typeorm';
 import { CreateCoffeeDto } from './dto/create-coffee.dto';
 import { UpdateCoffeeDto } from './dto/update-coffee.dto';
 import { Coffee } from './entities/coffee.entity';
@@ -14,6 +15,7 @@ export class CoffeesService {
     private readonly coffeeRepository: Repository<Coffee>,
     @InjectRepository(Flavor)
     private readonly flavorRepository: Repository<Flavor>,
+    private readonly dataSource: DataSource,
   ) {}
 
   async findAll(paginationQuery: PaginationQueryDto) {
@@ -78,6 +80,43 @@ export class CoffeesService {
       throw new NotFoundException(`Coffee #${id} not found`);
     }
     return this.coffeeRepository.remove(coffee);
+  }
+
+  async recommendCoffee(coffee: Coffee) {
+    /**
+     * A query runner, run queries on a single database connection
+     *
+     * @see https://typeorm.delightful.studio/interfaces/_query_runner_queryrunner_.queryrunner.html
+     * @see https://orkhan.gitbook.io/typeorm/docs/query-runner
+     *
+     */
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+
+    try {
+      // Increment recommendations
+      coffee.recommendations++;
+
+      // Create event
+      const recommendEvent = new Event();
+      recommendEvent.name = 'recommend_coffee';
+      recommendEvent.type = 'coffee';
+      recommendEvent.payload = { coffeeId: coffee.id };
+
+      // Save coffee with increment on recommendations as well as the recommend event
+      queryRunner.manager.save(coffee);
+      queryRunner.manager.save(recommendEvent);
+
+      // Execute transaction
+      await queryRunner.commitTransaction();
+    } catch {
+      // Prevent inconsistencies by rolling back the entire transaction
+      await queryRunner.rollbackTransaction();
+    } finally {
+      // Close queryRunner once everything is finished
+      await queryRunner.release();
+    }
   }
 
   private async preloadFlavorByName(name: string): Promise<Flavor> {

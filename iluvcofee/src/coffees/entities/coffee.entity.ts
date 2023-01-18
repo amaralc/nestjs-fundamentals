@@ -26,9 +26,8 @@ export class Coffee {
   @Column()
   brand: string;
 
-  // // Inform typeorm to generate a nullable column with json values (temporary, soon we will create relationships)
-  // @Column('json', { nullable: true })
-  // flavors: string[];
+  @Column({ default: 0 })
+  recommendations: number;
 
   /**
    * Decorator registered only in the owner of the relation
