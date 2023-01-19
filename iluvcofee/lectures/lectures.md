@@ -8,6 +8,7 @@
 ...
 
 - [Lecture 70: Generating Open API specification](#lecture-70-generating-open-api-specification)
+- [Lecture 71: Enabling CLI Plugin](#lecture-71-enabling-cli-plugin)
 
 ## Lecture 32: Retrieve entities with their relations
 
@@ -97,3 +98,42 @@ In order to use it with NestJS
   - Swagger UI for express: `swagger-ui-express`;
   - Swagger UI for fastify: `fastify-swagger`;
   - `yarn add @nestjs/swagger swagger-ui-express`;
+
+## Lecture 71: Enabling CLI Plugin
+
+https://learn.nestjs.com/courses/591712/lectures/23275309
+
+</br>
+
+- What shape of object is expected by a specific POST action in order to successfully add a new coffee if we don't have any information provided in the Swagger UI?
+
+  - The dedicated CreateCoffeeDto class is not enough to automatically generate the open API schemas out of the box;
+  - TypeScript's metadata reflection system has several limitations which make it impossible, for instance, to determine what properties what class consists of, or recognize wether a given property is optional or required.
+  - Some of these constraints can be addressed at compilation time;
+  - Nest provides a plugin that enhances the TypeScript compilation process to produce the amount of boiler plate code we'd be required to create in order to tackle this problem.
+
+    - This plugin is opt in;
+    - If you prefer you can declare all of the swagger decorators manually, or add specific decorators wherever you need to override the basic functionality provided by the plugin;
+    - To enable this new Swagger CLI plugin, open the nest cli json file and add the `compilerOptions` property as described bellow;
+
+    ```json
+    {
+      "$schema": "https://json.schemastore.org/nest-cli",
+      "collection": "@nestjs/schematics",
+      "sourceRoot": "src",
+      "compilerOptions": {
+        "deleteOutDir": true,
+        "plugins": ["@nestjs/swagger/plugin"]
+      }
+    }
+    ```
+
+    - Rerun the project;
+    - Access `localhost:3000/api`;
+    - Verify that the Swagger ui now reflects the `CreateCoffeeDto` with all of its properties for the request body of the create coffee POST endpoint;
+    - For `DTOs` that use Partial type:
+      - Switch
+        - `import { PartialType } from '@nestjs/mapped-types'`;
+      - By
+        - `import { PartialType } from '@nestjs/swagger'`;
+    - With that change, we achieve the same functionality while instructing swagger that the properties are optional;
