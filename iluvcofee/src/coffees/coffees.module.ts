@@ -8,7 +8,15 @@ import { Flavor } from './entities/flavor.entity';
 
 @Module({
   controllers: [CoffeesController],
-  providers: [CoffeesService],
+  providers: [
+    /**
+     * Explicitly tells what 'token' to provide and what class to use as the provider
+     */
+    {
+      provide: CoffeesService,
+      useClass: CoffeesService,
+    },
+  ],
   /**
    * Registers typeorm in this child module
    */

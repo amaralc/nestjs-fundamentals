@@ -13,6 +13,8 @@
 
 - ## Dependency Injection
 
+  - [Lecture 37: Setting Up a Migration](#lecture-39-understand-dependency-injection)
+
 - ## Application Configuration
 
 - ## Other Building Blocks by Example
@@ -151,11 +153,11 @@ If we check an existing example in the code, there are three key steps in the de
 
 - Second if we jump over to our `CoffeesController` we can see that we are requesting the `CoffeeService` in our constructor. This request tels Nest to inject the provider into our controller class, so we may be able to use it.
 
-- Third and lastly, NestJS is aware that this class (`CoffeesController`) also is a provider, because we have included it in our `CoffeesModule`, which registers this provider with the NestJS inversion of controll container.
+- Third and lastly, NestJS is aware that this class (`CoffeesController`) also is a provider, because we have included it in our `CoffeesModule`, which registers this provider with the NestJS inversion of control container.
 
 **Deeper dive**
 
-When the Nest
+Under the hood, Nest instantiate providers and resolve dependencies, using classes names as tokens. For mor detailed information, check the video.
 
 ## Lecture 70: Generating Open API specification
 
