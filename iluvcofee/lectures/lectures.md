@@ -13,7 +13,8 @@
 
 - ## Dependency Injection
 
-  - [Lecture 37: Setting Up a Migration](#lecture-39-understand-dependency-injection)
+  - [Lecture 39: Setting Up a Migration](#lecture-39-understand-dependency-injection)
+  - [Lecture 40: Control NestJS Module Encapsulation](#lecture-40-control-nestjs-module-encapsulation)
 
 - ## Application Configuration
 
@@ -158,6 +159,20 @@ If we check an existing example in the code, there are three key steps in the de
 **Deeper dive**
 
 Under the hood, Nest instantiate providers and resolve dependencies, using classes names as tokens. For mor detailed information, check the video.
+
+## Lecture 40: Control NestJS Module Encapsulation
+
+https://learn.nestjs.com/courses/591712/lectures/23242242
+
+</br>
+
+By default NestJS Modules encapsulate their providers. This encapsulation makes only allows to import providers that are:
+
+- Directly part of the current module;
+- Or exported from a module being used;
+
+We can think of "exported providers" as our modules public interface, or API.
+The encapsulation of providers within a module gives us full control of what is public and what is privately available within our modules and other modules that depend on them.
 
 ## Lecture 70: Generating Open API specification
 

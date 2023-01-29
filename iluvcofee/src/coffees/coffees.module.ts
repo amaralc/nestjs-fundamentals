@@ -21,5 +21,9 @@ import { Flavor } from './entities/flavor.entity';
    * Registers typeorm in this child module
    */
   imports: [TypeOrmModule.forFeature([Coffee, Flavor, Event])],
+  /**
+   * Expose providers to global API, so that other modules are able to make use of them
+   */
+  exports: [CoffeesService],
 })
 export class CoffeesModule {}
