@@ -15,6 +15,10 @@
 
   - [Lecture 39: Setting Up a Migration](#lecture-39-understand-dependency-injection)
   - [Lecture 40: Control NestJS Module Encapsulation](#lecture-40-control-nestjs-module-encapsulation)
+  - [Lecture 41: Diving Into Custom Providers](#lecture-41-diving-into-custom-providers)
+  - [Lecture 42: Value based Providers](#lecture-42-value-based-providers)
+  - [Lecture 43: Non-class-based Provider Tokens](#lecture-43-non-class-based-provider-tokens)
+  -
 
 - ## Application Configuration
 
@@ -173,6 +177,24 @@ By default NestJS Modules encapsulate their providers. This encapsulation makes 
 
 We can think of "exported providers" as our modules public interface, or API.
 The encapsulation of providers within a module gives us full control of what is public and what is privately available within our modules and other modules that depend on them.
+
+## Lecture 41: Diving Into Custom Providers
+
+https://learn.nestjs.com/courses/591712/lectures/23242245
+
+</br>
+
+## Lecture 42: Value based Providers
+
+https://learn.nestjs.com/courses/591712/lectures/23242246
+
+</br>
+
+## Lecture 43: Non-class-based Provider Tokens
+
+https://learn.nestjs.com/courses/591712/lectures/23242247
+
+</br>
 
 ## Lecture 70: Generating Open API specification
 
