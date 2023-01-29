@@ -13,6 +13,8 @@
 
 - ## Dependency Injection
 
+  - [Lecture 37: Setting Up a Migration](#lecture-39-understand-dependency-injection)
+
 - ## Application Configuration
 
 - ## Other Building Blocks by Example
@@ -132,6 +134,30 @@ npx typeorm migration:revert -d dist/typeorm-cli.config
 
 // Let TypeOrm generate migrations (for you)
 npx typeorm migration:generate src/migrations/SchemaSync -d dist/typeorm-cli.config
+
+## Lecture 38: Chapter 3 - Review Quiz
+
+## Lecture 39: Understand Dependency Injection
+
+https://learn.nestjs.com/courses/591712/lectures/18346941
+
+</br>
+
+Dependency injection is a technique where we delegate the instantiation of dependencies to an "inversion of control" (IoC) container. In our case, this IoC container is the NestJS runtime system itself.
+
+NestJS handles all the heavy lifting here, instead of trying to achieve Dependency Injection ourselves. Essentially when we ask for a dependency in a class constructor, NestJS handles and retrieves the object to us, along with any dependencies it might require and so on.
+
+If we check an existing example in the code, there are three key steps in the dependency injection process that make it all happen.
+
+- First in our CoffeeService, the `@Injectable()` decorator declares a class that can be managed by the Nest "container". This decorator marks the CoffeeService class as a "Provider".
+
+- Second if we jump over to our `CoffeesController` we can see that we are requesting the `CoffeeService` in our constructor. This request tels Nest to inject the provider into our controller class, so we may be able to use it.
+
+- Third and lastly, NestJS is aware that this class (`CoffeesController`) also is a provider, because we have included it in our `CoffeesModule`, which registers this provider with the NestJS inversion of control container.
+
+**Deeper dive**
+
+Under the hood, Nest instantiate providers and resolve dependencies, using classes names as tokens. For mor detailed information, check the video.
 
 ## Lecture 70: Generating Open API specification
 
