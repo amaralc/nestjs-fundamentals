@@ -81,7 +81,8 @@ https://learn.nestjs.com/courses/591712/lectures/23241320
 
 </br>
 
-Indexes can hel our application both rapid random lookups efficient access of ordered records. Use them whenever performance is vitally important for a certain entity;
+Indexes can add to our application both rapid random lookups and efficient access of ordered records.
+Use them whenever performance is vitally important for a certain entity;
 
 ## Lecture 70: Generating Open API specification
 
