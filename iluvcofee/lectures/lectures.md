@@ -3,7 +3,7 @@
 - [Lecture 32: Retrieve Entities with their Relations](#lecture-32-retrieve-entities-with-their-relations)
 - [Lecture 33: Using Cascading Inserts and Updates](#lecture-33-using-cascading-inserts-and-updates)
 - [Lecture 34: Adding Pagination](#lecture-34-adding-pagination)
-- [Lecture 35: Adding Transactions](#lecture-35-adding-transactions)
+- [Lecture 35: Using Transactions](#lecture-35-using-transactions)
 
 ...
 
@@ -57,7 +57,7 @@ https://learn.nestjs.com/courses/591712/lectures/23193770
     },
   ```
 
-## Lecture 35: Adding Transactions
+## Lecture 35: Using Transactions
 
 https://learn.nestjs.com/courses/591712/lectures/23193771
 
