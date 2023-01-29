@@ -75,6 +75,14 @@ https://learn.nestjs.com/courses/591712/lectures/23193771
     - https://orkhan.gitbook.io/typeorm/docs/query-runner
   - There are other complex and advanced techniques to achieve this which leverage Nest scope providers and interceptors to automatically wrap every write query in the transaction, but these techniques are covered in other advanced NestJS courses in the future;
 
+## Lecture 36: Adding Indexes to Entities
+
+https://learn.nestjs.com/courses/591712/lectures/23241320
+
+</br>
+
+Indexes can hel our application both rapid random lookups efficient access of ordered records. Use them whenever performance is vitally important for a certain entity;
+
 ## Lecture 70: Generating Open API specification
 
 https://learn.nestjs.com/courses/591712/lectures/23275307
