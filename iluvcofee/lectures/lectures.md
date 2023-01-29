@@ -4,6 +4,7 @@
 - [Lecture 33: Using Cascading Inserts and Updates](#lecture-33-using-cascading-inserts-and-updates)
 - [Lecture 34: Adding Pagination](#lecture-34-adding-pagination)
 - [Lecture 35: Using Transactions](#lecture-35-using-transactions)
+- [Lecture 36: Adding Indexes to Entities](#lecture-36-adding-indexes-to-entities)
 
 ...
 
@@ -81,7 +82,35 @@ https://learn.nestjs.com/courses/591712/lectures/23241320
 
 </br>
 
-Indexes can hel our application both rapid random lookups efficient access of ordered records. Use them whenever performance is vitally important for a certain entity;
+Indexes can add to our application both rapid random lookups and efficient access of ordered records.
+Use them whenever performance is vitally important for a certain entity;
+
+## Lecture 37: Setting Up Migrations
+
+https://learn.nestjs.com/courses/591712/lectures/23241322
+
+</br>
+
+Database migrations provides a way to incrementally update our database schema and keep it in sync with the application's data model, all while preserving existing data in our database.
+
+To create a new migration using TypeOrm, we can type:
+
+`npx typeorm migration:create src/migrations/CoffeeRefactor`
+
+After creating the migration and adding content to the up and down methods, build the application so that TypeORM CLI can find the entities and migrations.
+
+`npm run build` or `yarn build`;
+
+After the build is complete, run the migrations:
+
+// Run migration(s)
+`npx typeorm migration:run -d dist/typeorm-cli.config`
+
+// REVERT migration(s)
+npx typeorm migration:revert -d dist/typeorm-cli.config
+
+// Let TypeOrm generate migrations (for you)
+npx typeorm migration:generate src/migrations/SchemaSync -d dist/typeorm-cli.config
 
 ## Lecture 70: Generating Open API specification
 
