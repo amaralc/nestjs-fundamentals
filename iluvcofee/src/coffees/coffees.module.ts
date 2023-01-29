@@ -7,35 +7,26 @@ import { CoffeesService } from './coffees.service';
 import { Coffee } from './entities/coffee.entity';
 import { Flavor } from './entities/flavor.entity';
 
+class ConfigService {}
+class DevelopmentConfigService {}
+class ProductionConfigService {}
+
 @Module({
   controllers: [CoffeesController],
   providers: [
-    /**
-     * Use the following format for the short version
-     *
-     * @see https://learn.nestjs.com/courses/591712/lectures/18346941
-     */
+    // Default version (https://learn.nestjs.com/courses/591712/lectures/18346941)
+
     CoffeesService,
+    // Use non-class based provider tokens (https://learn.nestjs.com/courses/591712/lectures/23242247)
+    { provide: COFFEES_BRANDS, useValue: ['buddy brew', 'nescafe'] },
 
-    /**
-     * Use the following format if you want to explicitly tell what class-based provider 'token' to provide and what class to use as the provider
-     *
-     *  {
-     *    provide: CoffeesService,
-     *    useClass: CoffeesService,
-     *  }
-     *
-     * @see https://learn.nestjs.com/courses/591712/lectures/18346941
-     */
-
-    /**
-     * Use non-class based provider tokens
-     *
-     * @see https://learn.nestjs.com/courses/591712/lectures/23242247
-     */
+    // Use class based provider tokens (https://learn.nestjs.com/courses/591712/lectures/23242248)
     {
-      provide: COFFEES_BRANDS,
-      useValue: ['buddy brew', 'nescafe'],
+      provide: ConfigService,
+      useClass:
+        process.env.NODE_ENV === 'development'
+          ? DevelopmentConfigService
+          : ProductionConfigService,
     },
   ],
   /**
