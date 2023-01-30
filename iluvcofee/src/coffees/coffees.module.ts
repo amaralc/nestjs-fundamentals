@@ -1,4 +1,4 @@
-import { Module } from '@nestjs/common';
+import { Injectable, Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Event } from 'src/events/entities/event.entity';
 import { COFFEES_BRANDS } from './coffees.constants';
@@ -11,14 +11,27 @@ class ConfigService {}
 class DevelopmentConfigService {}
 class ProductionConfigService {}
 
+@Injectable()
+export class CoffeeBrandsFactory {
+  create() {
+    return ['buddy brew', 'nescafe'];
+  }
+}
+
 @Module({
   controllers: [CoffeesController],
   providers: [
     // Default version (https://learn.nestjs.com/courses/591712/lectures/18346941)
 
     CoffeesService,
+    CoffeeBrandsFactory,
     // Use non-class based provider tokens (https://learn.nestjs.com/courses/591712/lectures/23242247)
-    { provide: COFFEES_BRANDS, useValue: ['buddy brew', 'nescafe'] },
+    {
+      provide: COFFEES_BRANDS,
+      inject: [CoffeeBrandsFactory],
+      useFactory: (brandsFactory: CoffeeBrandsFactory) =>
+        brandsFactory.create(),
+    },
 
     // Use class based provider tokens (https://learn.nestjs.com/courses/591712/lectures/23242248)
     {

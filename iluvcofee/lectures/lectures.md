@@ -19,6 +19,7 @@
   - [Lecture 42: Value based Providers](#lecture-42-value-based-providers)
   - [Lecture 43: Non-class-based Provider Tokens](#lecture-43-non-class-based-provider-tokens)
   - [Lecture 44: Class Providers](#lecture-44-class-providers)
+  - [Lecture 45: Factory Providers](#lecture-45-factory-providers)
   -
 
 - ## Application Configuration
@@ -200,6 +201,12 @@ https://learn.nestjs.com/courses/591712/lectures/23242247
 ## Lecture 44: Class Providers
 
 https://learn.nestjs.com/courses/591712/lectures/23242248
+
+</br>
+
+## Lecture 45: Factory Providers
+
+https://learn.nestjs.com/courses/591712/lectures/23242249
 
 </br>
 
